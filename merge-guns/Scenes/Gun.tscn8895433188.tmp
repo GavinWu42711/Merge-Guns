@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceqg07653edpx"]
+
+[ext_resource type="Script" uid="uid://b6ymka3i8orrp" path="res://Scenes/gun.gd" id="1_m3ict"]
+[ext_resource type="PackedScene" uid="uid://cqobkeorjltj1" path="res://Scenes/Bullet.tscn" id="2_cgpo0"]
+[ext_resource type="Script" uid="uid://sr0v6wr5r6wu" path="res://Scripts/GunResource.gd" id="2_u7kx4"]
+[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://icon.svg" id="4_37v6b"]
+
+[sub_resource type="Resource" id="Resource_cgpo0"]
+script = ExtResource("2_u7kx4")
+bullet_base_stats = {
+"bullet_damage": 0.0,
+"bullet_lifespan": 5.0,
+"bullet_speed": 300.0
+}
+bullet_stat_mults = {
+"bullet_damage_mult": 1.0,
+"bullet_lifespan_mult": 1.0,
+"bullet_speed_mult": 1.0
+}
+bullet_scene = ExtResource("2_cgpo0")
+gun_base_stats = {
+"gun_bullets_per_shot": 3,
+"gun_burst_cooldown": 0.5,
+"gun_bursts": 3,
+"gun_shot_cooldown": 0.5
+}
+metadata/_custom_type_script = "uid://sr0v6wr5r6wu"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_m3ict")
+gun_resource = SubResource("Resource_cgpo0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(1, 0.140625)
+texture = ExtResource("4_37v6b")
