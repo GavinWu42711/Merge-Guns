@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/global.gd"
-GlobalUpgrades="*res://global_upgrades.gd"
+GlobalUpgrades="*res://Scripts/global_upgrades.gd"
 
 [dotnet]
 
