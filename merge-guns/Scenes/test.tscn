@@ -1,7 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://belfd0swqij05"]
+[gd_scene load_steps=5 format=3 uid="uid://belfd0swqij05"]
 
+[ext_resource type="Script" uid="uid://irtm46pv8knj" path="res://Scenes/button.gd" id="2_8od7v"]
 [ext_resource type="PackedScene" uid="uid://t005j7vi2i42" path="res://Scenes/Player.tscn" id="2_qc4db"]
+[ext_resource type="Script" uid="uid://sr0v6wr5r6wu" path="res://Scripts/GunResource.gd" id="3_qc4db"]
+
+[sub_resource type="Resource" id="Resource_ys1qc"]
+script = ExtResource("3_qc4db")
+gun_stat_increases = {
+"gun_bullets_per_shot_increase": 1,
+"gun_burst_cooldown_increase": 0.0,
+"gun_bursts_increase": 0,
+"gun_shot_cooldown_increase": 0.0
+}
+metadata/_custom_type_script = "uid://sr0v6wr5r6wu"
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_qc4db")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 127.0
+offset_top = 17.0
+offset_right = 165.0
+offset_bottom = 48.0
+text = "test"
+script = ExtResource("2_8od7v")
+gun_upgrade = SubResource("Resource_ys1qc")
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
