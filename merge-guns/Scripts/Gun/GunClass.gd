@@ -11,12 +11,17 @@ TO-DO:
 
 @export var gun_info:GunResource
 @export var gun_type:String = "all"
+@export var bullet_spawnpoint:Marker2D
+
 var can_shoot:bool = true
+
+signal shoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalUpgrades.get_upgrade.connect(update_upgrades)
 	update_upgrades(gun_type)
+	shoot.connect(complete_shot)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,7 +46,7 @@ func complete_shot() -> void:
 			#Multi-shots comes out in a radial pattern. Even bullets always shift up while odd bullets always shift down;
 			for shot in (amount_to_shoot):
 				var new_target_pos:Vector2 = get_global_mouse_position()
-				var start_pos:Vector2 = self.global_position
+				var start_pos:Vector2 = bullet_spawnpoint.global_position
 				if shot % 2 == 1:
 					new_target_pos.y += initial_spread
 					new_target_pos.y += spread * shot

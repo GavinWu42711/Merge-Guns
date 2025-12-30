@@ -59,7 +59,7 @@ autoplay = "flying"
 frame_progress = 0.049570832
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(1.5, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kyqiw")
@@ -67,3 +67,4 @@ shape = SubResource("RectangleShape2D_kyqiw")
 [node name="Gun" parent="." instance=ExtResource("3_gntrk")]
 position = Vector2(18.73418, -0.5063292)
 scale = Vector2(0.21, 0.21)
+gun_type = null

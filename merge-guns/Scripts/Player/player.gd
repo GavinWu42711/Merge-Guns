@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y = Input.get_axis("up","down") * SPEED 
 	
 	if Input.is_action_just_pressed("shoot"):
-		gun.shoot()
+		gun.shoot.emit()
 	
 
 	move_and_slide()
