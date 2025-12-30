@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ceqg07653edpx"]
 
-[ext_resource type="Script" uid="uid://b6ymka3i8orrp" path="res://Scenes/gun.gd" id="1_m3ict"]
+[ext_resource type="Script" uid="uid://b6ymka3i8orrp" path="res://gun.gd" id="1_m3ict"]
 [ext_resource type="PackedScene" uid="uid://cqobkeorjltj1" path="res://Scenes/Bullet.tscn" id="2_cgpo0"]
-[ext_resource type="Script" uid="uid://sr0v6wr5r6wu" path="res://Scripts/GunResource.gd" id="2_u7kx4"]
-[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://icon.svg" id="4_37v6b"]
+[ext_resource type="Script" uid="uid://sr0v6wr5r6wu" path="res://Scripts/Gun/GunResource.gd" id="2_u7kx4"]
+[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://Assets/icon.svg" id="4_37v6b"]
 
 [sub_resource type="Resource" id="Resource_37v6b"]
 script = ExtResource("2_u7kx4")

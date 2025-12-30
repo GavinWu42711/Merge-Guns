@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Merge Guns"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
-GlobalUpgrades="*res://Scripts/global_upgrades.gd"
+Global="*res://Scripts/Global/global.gd"
+GlobalUpgrades="*res://Scripts/Global/global_upgrades.gd"
 
 [dotnet]
 
@@ -61,6 +61,10 @@ interact={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_9="Bullet"
 
 [rendering]
 

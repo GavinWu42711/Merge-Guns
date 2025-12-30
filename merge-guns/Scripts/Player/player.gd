@@ -4,7 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 @onready var gun:GunClass = $Gun
+@onready var animated_sprite:AnimatedSprite2D = $AnimatedSprite2D
 
+func _ready() -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	

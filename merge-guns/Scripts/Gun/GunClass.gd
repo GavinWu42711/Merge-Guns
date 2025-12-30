@@ -87,8 +87,8 @@ func update_upgrades(upgrade_gun_type:String) -> void:
 		Base stats should generally not be changed
 		"""
 		
-		if GlobalUpgrades.gun_upgrades.get(gun_type) and gun_type != "all":
-			upgrades_to_gun_type = GlobalUpgrades.gun_upgrades[gun_type]
+		if GlobalUpgrades.gun_upgrades.get(gun_type) and upgrade_gun_type != "all":
+			upgrades_to_gun_type = GlobalUpgrades.gun_upgrades[upgrade_gun_type]
 			
 		for stat_mult_upgrade in upgrades_to_all.bullet_stat_mults.keys():
 			# Need the minus one to get the proper total mult increase. Mults do not work exponentially and are additive

@@ -1,8 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://t005j7vi2i42"]
+[gd_scene load_steps=10 format=3 uid="uid://t005j7vi2i42"]
 
-[ext_resource type="Script" uid="uid://o6u0cudgh2vu" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://o6u0cudgh2vu" path="res://Scripts/Player/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://bhtmumpxk8tnq" path="res://Assets/Drone.png" id="2_gntrk"]
 [ext_resource type="PackedScene" uid="uid://ceqg07653edpx" path="res://Scenes/Gun.tscn" id="3_gntrk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ixxa"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn08x"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
+atlas = ExtResource("2_gntrk")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dewec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ixxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ee3")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 24.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(16, 17)
@@ -11,10 +52,11 @@ size = Vector2(16, 17)
 scale = Vector2(1.975, 1.975)
 script = ExtResource("1_kyqiw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.9073486e-06, 1.9073486e-06)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_rpqav")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhhdu")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.049570832
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
