@@ -21,6 +21,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	Global.player_pos = self.global_position
+	
 	look_at(get_global_mouse_position())
 	
 	

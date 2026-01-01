@@ -29,6 +29,7 @@ func got_hit(damage:float,side_effects:Dictionary) -> void:
 
 func take_damage(damage:float) -> void:
 	current_health -= damage
+	print("enemy health:" + str(current_health))
 	if current_health <= 0:
 		current_health = 0
 		die()
@@ -50,6 +51,8 @@ func object_hit(node:Node2D) -> void:
 func move_and_attack() -> void:
 	move()
 	check_attack_hitbox()
-
+	move_and_slide()
+	
 func move() -> void:
-	pass
+	self.look_at(Global.player_pos)
+	self.velocity = Vector2.RIGHT.rotated(rotation) * enemy_info.base_stats[enemy_info.base_stats_enum.SPEED] * enemy_info.stat_mults[enemy_info.stat_mults_enum.SPEED_MULT]
