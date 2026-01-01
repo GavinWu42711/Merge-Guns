@@ -4,7 +4,10 @@ var gun_upgrades:Dictionary = {
 	"all":GunResource.new()
 }
 
+#Emit signal to have all guns fetch respective upgrades
 signal get_upgrade(gun_type:String)
+
+#Emit signal to track a new upgrade
 signal new_upgrade(gun_type:String,upgrades:GunResource)
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +34,7 @@ func upgrade_gun(gun_type:String, upgrades:GunResource) -> void:
 			gun_upgrades[gun_type].gun_stat_increases[stat_increase] += upgrades.gun_stat_increases[stat_increase]
 	else:
 		#If the gun type isn't populated in the dictionary yet
-		gun_upgrades[gun_type] = upgrades
+		gun_upgrades[gun_type] = upgrades.duplicate(true)
 		
 	#Applies upgrades to all guns affected
 	get_upgrade.emit(gun_type)

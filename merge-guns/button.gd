@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_button_down() -> void:
-	GlobalUpgrades.new_upgrade.emit("all" ,gun_upgrade)
+	GlobalUpgrades.new_upgrade.emit("test" ,gun_upgrade)

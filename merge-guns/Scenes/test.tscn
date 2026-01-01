@@ -7,6 +7,12 @@
 
 [sub_resource type="Resource" id="Resource_ys1qc"]
 script = ExtResource("3_qc4db")
+gun_stat_increases = {
+"gun_bullets_per_shot_increase": 1,
+"gun_burst_cooldown_increase": 0.0,
+"gun_bursts_increase": 0,
+"gun_shot_cooldown_increase": 0.0
+}
 metadata/_custom_type_script = "uid://sr0v6wr5r6wu"
 
 [node name="Node2D" type="Node2D"]

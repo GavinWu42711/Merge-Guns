@@ -2,12 +2,6 @@ extends Node2D
 
 class_name GunClass
 
-"""
-TO-DO:
-	Add an option to increment by angle for single shot
-	Change where complete_shot() gets its start_pos and target_pos
-	Upgrade system
-"""
 
 @export var gun_info:GunResource
 @export var gun_type:String = "all"
@@ -32,6 +26,7 @@ func complete_shot() -> void:
 		can_shoot = false
 		for burst in (gun_info.gun_base_stats["gun_bursts"] + gun_info.gun_stat_increases["gun_bursts_increase"]):
 			var amount_to_shoot:int = gun_info.gun_base_stats["gun_bullets_per_shot"] + gun_info.gun_stat_increases["gun_bullets_per_shot_increase"]
+			print(amount_to_shoot)
 			
 			var spread:float = 1
 			var initial_spread:float = 0
@@ -45,32 +40,37 @@ func complete_shot() -> void:
 			
 			#Multi-shots comes out in a radial pattern. Even bullets always shift up while odd bullets always shift down;
 			for shot in (amount_to_shoot):
-				var new_target_pos:Vector2 = get_global_mouse_position()
+				var target_pos:Vector2 = get_global_mouse_position()
 				var start_pos:Vector2 = bullet_spawnpoint.global_position
 				if shot % 2 == 1:
-					new_target_pos.y += initial_spread
-					new_target_pos.y += spread * shot
-					single_shot(start_pos, new_target_pos)
+					var angle = initial_spread
+					angle += spread * shot
+					single_shot(start_pos, target_pos, angle)
 				else:
-					new_target_pos.y -= initial_spread
-					new_target_pos.y -= spread * shot
-					single_shot(start_pos, new_target_pos)
+					var angle = -initial_spread
+					angle -= spread * shot
+					single_shot(start_pos, target_pos,angle)
 				
 					
 			await get_tree().create_timer(gun_info.gun_base_stats["gun_burst_cooldown"] + gun_info.gun_stat_increases["gun_burst_cooldown_increase"]).timeout
 		await get_tree().create_timer(gun_info.gun_base_stats["gun_shot_cooldown"] + gun_info.gun_stat_increases["gun_shot_cooldown_increase"]).timeout		
 		can_shoot = true
 
-func single_shot(start_pos:Vector2, target_pos:Vector2) -> void:
+#Assume the angle is in degrees
+func single_shot(start_pos:Vector2, target_pos:Vector2, angle:float = 0) -> void:
 	#Creating the bullet
 	var bullet:BulletClass = gun_info.bullet_scene.instantiate()
 	bullet.bullet_resource = BulletResource.new()
 	get_tree().root.add_child(bullet)
 	
-	#Setting up the transform of the bullet and it's movement
+	
+	#Setting up the transform of the bullet and it's movement given a target position from a starting position
 	bullet.global_position = start_pos
 	bullet.look_at(target_pos)
-	bullet.velocity = Vector2.RIGHT.rotated(bullet.rotation) * gun_info.bullet_base_stats["bullet_speed"] * gun_info.bullet_stat_mults["bullet_speed_mult"]
+	#Assume the vector from start_pos to target_pos as 0 degrees
+	bullet.velocity = Vector2.RIGHT.rotated(bullet.rotation + deg_to_rad(angle)) * gun_info.bullet_base_stats["bullet_speed"] * gun_info.bullet_stat_mults["bullet_speed_mult"]
+	
+	
 	
 	#Setting up all the information the bullet needs
 	bullet.bullet_resource.bullet_base_stats = gun_info.bullet_base_stats
@@ -105,7 +105,5 @@ func update_upgrades(upgrade_gun_type:String) -> void:
 			else:
 				gun_info.bullet_upgraded_effects[effect_upgrade] = upgrades_to_gun_type.bullet_upgraded_effects[effect_upgrade] + upgrades_to_all.bullet_upgraded_effects[effect_upgrade]
 				
-
-		
 		for stat_increase in upgrades_to_all.gun_stat_increases.keys():
 			gun_info.gun_stat_increases[stat_increase] = upgrades_to_gun_type.gun_stat_increases[stat_increase] + upgrades_to_all.gun_stat_increases[stat_increase]
