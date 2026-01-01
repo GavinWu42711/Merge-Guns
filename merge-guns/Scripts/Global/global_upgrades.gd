@@ -1,5 +1,10 @@
 extends Node
 
+"""
+To-Do: Implement upgrades for enemies to allow for scaling throughout the game
+"""
+
+#Dictionary of all upgrades  that have taken place on the gun and its bullets
 var gun_upgrades:Dictionary = {
 	"all":GunResource.new()
 }
@@ -18,6 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+#Adds on the upgrades to the existing list of upgrades
 func upgrade_gun(gun_type:String, upgrades:GunResource) -> void:
 	if gun_upgrades.get(gun_type) != null:
 		for stat_mult_upgrade in upgrades.bullet_stat_mults.keys():

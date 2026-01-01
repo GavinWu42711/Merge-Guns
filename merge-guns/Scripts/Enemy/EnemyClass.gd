@@ -19,7 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	check_attack_hitbox()
+	move_and_attack()
 		
 func got_hit(damage:float,side_effects:Dictionary) -> void:
 	if side_effects:
@@ -46,3 +46,10 @@ func check_attack_hitbox() -> void:
 
 func object_hit(node:Node2D) -> void:
 	node.player_hit.emit(enemy_info.base_stats[enemy_info.base_stats_enum.DAMAGE] * enemy_info.stat_mults[enemy_info.stat_mults_enum.DAMAGE_MULT],{})
+
+func move_and_attack() -> void:
+	move()
+	check_attack_hitbox()
+
+func move() -> void:
+	pass

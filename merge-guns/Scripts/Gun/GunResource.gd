@@ -2,6 +2,10 @@ extends Resource
 
 class_name GunResource
 
+"""
+To-do: Implement spread as something that can impact the gun
+"""
+
 #Starting stats of the bullet for a gun
 @export var bullet_base_stats:Dictionary = {
 	"bullet_speed":float(400),

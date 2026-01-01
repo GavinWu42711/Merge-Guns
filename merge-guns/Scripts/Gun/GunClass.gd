@@ -2,6 +2,9 @@ extends Node2D
 
 class_name GunClass
 
+"""
+To do: Implement spread as a stat that can be affected
+"""
 
 @export var gun_info:GunResource
 @export var gun_type:String = "all"
