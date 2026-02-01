@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcrpmosbb5f5f"]
-
-[ext_resource type="Script" uid="uid://daridul83y0tf" path="res://Scripts/Rooms/dungeon.gd" id="1_gaxvh"]
-
-[node name="Dungeon" type="Node2D"]
-script = ExtResource("1_gaxvh")

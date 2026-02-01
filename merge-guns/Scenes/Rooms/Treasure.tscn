@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://mx3pdyql8x65"]
+
+[ext_resource type="Script" uid="uid://bexdxf1sxm85o" path="res://Scripts/Rooms/treasure.gd" id="1_bl03v"]
+[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://Assets/icon.svg" id="2_05cgd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2oke"]
+size = Vector2(179, 178)
+
+[node name="Treasure" type="Node2D" node_paths=PackedStringArray("entrance_spawn", "next_room_door")]
+script = ExtResource("1_bl03v")
+room_type = "treasure"
+entrance_spawn = NodePath("PlayerSpawn")
+next_room_door = NodePath("Exit")
+next_room = "shop"
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="Exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(404, -93)
+shape = SubResource("RectangleShape2D_m2oke")
+
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+position = Vector2(404.5, -92.5)
+scale = Vector2(1.3984375, 1.4140625)
+texture = ExtResource("2_05cgd")

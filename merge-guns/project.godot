@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.svg"
 
 Global="*res://Scripts/Global/global.gd"
 GlobalUpgrades="*res://Scripts/Global/global_upgrades.gd"
+Dungeon="*res://Scripts/Global/dungeon.gd"
 
 [dotnet]
 

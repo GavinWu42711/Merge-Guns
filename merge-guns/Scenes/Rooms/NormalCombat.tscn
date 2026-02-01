@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0u2k5j3p200l"]
+
+[ext_resource type="Script" uid="uid://cfbar01k1sejb" path="res://Scripts/Rooms/normal_combat.gd" id="1_y8mei"]
+[ext_resource type="Texture2D" uid="uid://bme6u6d3svqy4" path="res://Assets/icon.svg" id="2_jbt16"]
+[ext_resource type="PackedScene" uid="uid://t005j7vi2i42" path="res://Scenes/Player/Player.tscn" id="3_q3xgc"]
+[ext_resource type="Script" uid="uid://irtm46pv8knj" path="res://Scripts/test/button.gd" id="4_w48na"]
+[ext_resource type="Script" uid="uid://sr0v6wr5r6wu" path="res://Scripts/Gun/GunResource.gd" id="5_q87p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3xgc"]
+size = Vector2(179, 178)
+
+[sub_resource type="Resource" id="Resource_bg6qn"]
+script = ExtResource("5_q87p5")
+gun_stat_increases = {
+"gun_bullets_per_shot_increase": 1,
+"gun_burst_cooldown_increase": 0.0,
+"gun_bursts_increase": 0,
+"gun_shot_cooldown_increase": 0.0
+}
+metadata/_custom_type_script = "uid://sr0v6wr5r6wu"
+
+[node name="NormalCombat" type="Node2D" node_paths=PackedStringArray("entrance_spawn", "next_room_door")]
+script = ExtResource("1_y8mei")
+room_type = "normal_combat"
+entrance_spawn = NodePath("PlayerSpawn")
+next_room_door = NodePath("Exit")
+next_room = "forge"
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="Exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(404, -93)
+shape = SubResource("RectangleShape2D_q3xgc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Exit"]
+position = Vector2(404.5, -92.5)
+scale = Vector2(1.3984375, 1.4140625)
+texture = ExtResource("2_jbt16")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_q3xgc")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 127.0
+offset_top = 17.0
+offset_right = 165.0
+offset_bottom = 48.0
+text = "test"
+script = ExtResource("4_w48na")
+gun_upgrade = SubResource("Resource_bg6qn")
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

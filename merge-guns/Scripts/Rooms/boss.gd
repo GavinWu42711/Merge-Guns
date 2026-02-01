@@ -1,16 +1,11 @@
-extends Node2D
+extends RoomClass
 
-class_name DungeonHandler
-
-var room:String
-
-signal change_room
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super._process(delta)
